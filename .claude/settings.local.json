@@ -11,7 +11,8 @@
       "Read(//c/Users/ndcuser/**)",
       "Bash(grep -E \"\\\\.\\(css|scss\\)$\")",
       "Bash(node -e \"require\\('xlsx'\\)\")",
-      "Bash(node scripts/generate-test-spec.js)"
+      "Bash(node scripts/generate-test-spec.js)",
+      "Bash(npx playwright:*)"
     ]
   }
 }
