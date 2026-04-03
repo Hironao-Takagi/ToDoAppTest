@@ -9,7 +9,9 @@
       "Read(//c/Program Files/nodejs//**)",
       "Read(//c/Users/ndcuser/AppData/Roaming/**)",
       "Read(//c/Users/ndcuser/**)",
-      "Bash(grep -E \"\\\\.\\(css|scss\\)$\")"
+      "Bash(grep -E \"\\\\.\\(css|scss\\)$\")",
+      "Bash(node -e \"require\\('xlsx'\\)\")",
+      "Bash(node scripts/generate-test-spec.js)"
     ]
   }
 }
