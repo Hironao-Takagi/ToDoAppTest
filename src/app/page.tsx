@@ -395,10 +395,10 @@ export default function Home() {
               {/* 予定日 */}
               <div className="grid grid-cols-2 gap-2 mt-3 mb-3">
                 <div>
-                  <label className={`block text-xs mb-1 ${formErrors.plannedStart ? "text-red-400" : "text-stone-400"}`}>
+                  <label htmlFor="add-planned-start" className={`block text-xs mb-1 ${formErrors.plannedStart ? "text-red-400" : "text-stone-400"}`}>
                     開始予定日 <span className="text-red-400">*</span>
                   </label>
-                  <input type="date" value={addPlannedStart}
+                  <input id="add-planned-start" type="date" value={addPlannedStart}
                     onChange={(e) => { setAddPlannedStart(e.target.value); setFormErrors((p) => ({ ...p, plannedStart: false })); }}
                     className={`w-full px-3 py-2 rounded-lg bg-stone-50 border text-stone-600 text-xs outline-none transition-colors ${
                       formErrors.plannedStart ? "border-red-300 focus:border-red-400" : "border-stone-200 focus:border-stone-400"
@@ -407,10 +407,10 @@ export default function Home() {
                   {formErrors.plannedStart && <p className="text-xs text-red-400 mt-1">選択してください</p>}
                 </div>
                 <div>
-                  <label className={`block text-xs mb-1 ${formErrors.plannedEnd ? "text-red-400" : "text-stone-400"}`}>
+                  <label htmlFor="add-planned-end" className={`block text-xs mb-1 ${formErrors.plannedEnd ? "text-red-400" : "text-stone-400"}`}>
                     終了予定日 <span className="text-red-400">*</span>
                   </label>
-                  <input type="date" value={addPlannedEnd}
+                  <input id="add-planned-end" type="date" value={addPlannedEnd}
                     onChange={(e) => { setAddPlannedEnd(e.target.value); setFormErrors((p) => ({ ...p, plannedEnd: false })); }}
                     className={`w-full px-3 py-2 rounded-lg bg-stone-50 border text-stone-600 text-xs outline-none transition-colors ${
                       formErrors.plannedEnd ? "border-red-300 focus:border-red-400" : "border-stone-200 focus:border-stone-400"
@@ -493,7 +493,7 @@ export default function Home() {
                 const rLabel       = recurrenceLabel(todo.recurrence);
 
                 return (
-                  <div key={todo.id} className={`rounded-xl bg-white border transition-all ${
+                  <div key={todo.id} data-testid="todo-item" className={`rounded-xl bg-white border transition-all ${
                     todo.completed  ? "border-stone-100 opacity-60"
                     : isCompleting  ? "border-indigo-200"
                     : isOverdue     ? "border-red-200"
@@ -563,10 +563,10 @@ export default function Home() {
                         </p>
                         <div className="grid grid-cols-2 gap-2">
                           <div>
-                            <label className={`block text-xs mb-1 ${completionErrors.actualStart ? "text-red-400" : "text-stone-500"}`}>
+                            <label htmlFor="actual-start" className={`block text-xs mb-1 ${completionErrors.actualStart ? "text-red-400" : "text-stone-500"}`}>
                               開始実績 <span className="text-red-400">*</span>
                             </label>
-                            <input type="date" value={completionDates.actualStart}
+                            <input id="actual-start" type="date" value={completionDates.actualStart}
                               onChange={(e) => {
                                 setCompletionDates((p) => ({ ...p, actualStart: e.target.value }));
                                 setCompletionErrors((p) => ({ ...p, actualStart: false }));
@@ -578,10 +578,10 @@ export default function Home() {
                             {completionErrors.actualStart && <p className="text-xs text-red-400 mt-0.5">入力してください</p>}
                           </div>
                           <div>
-                            <label className={`block text-xs mb-1 ${completionErrors.actualEnd ? "text-red-400" : "text-stone-500"}`}>
+                            <label htmlFor="actual-end" className={`block text-xs mb-1 ${completionErrors.actualEnd ? "text-red-400" : "text-stone-500"}`}>
                               終了実績 <span className="text-red-400">*</span>
                             </label>
-                            <input type="date" value={completionDates.actualEnd}
+                            <input id="actual-end" type="date" value={completionDates.actualEnd}
                               onChange={(e) => {
                                 setCompletionDates((p) => ({ ...p, actualEnd: e.target.value }));
                                 setCompletionErrors((p) => ({ ...p, actualEnd: false }));
@@ -659,14 +659,14 @@ export default function Home() {
           <div>
             {/* Month Nav */}
             <div className="flex items-center justify-between mb-4">
-              <button onClick={prevMonth}
+              <button onClick={prevMonth} aria-label="前月"
                 className="w-9 h-9 rounded-xl bg-white border border-stone-200 flex items-center justify-center text-stone-500 hover:bg-stone-50 transition-colors">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
               <span className="text-base font-semibold text-stone-700">{calYear}年 {MONTH_NAMES[calMonth]}</span>
-              <button onClick={nextMonth}
+              <button onClick={nextMonth} aria-label="次月"
                 className="w-9 h-9 rounded-xl bg-white border border-stone-200 flex items-center justify-center text-stone-500 hover:bg-stone-50 transition-colors">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
