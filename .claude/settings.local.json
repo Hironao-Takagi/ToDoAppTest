@@ -8,7 +8,8 @@
       "mcp__Claude_Preview__preview_start",
       "Read(//c/Program Files/nodejs//**)",
       "Read(//c/Users/ndcuser/AppData/Roaming/**)",
-      "Read(//c/Users/ndcuser/**)"
+      "Read(//c/Users/ndcuser/**)",
+      "Bash(grep -E \"\\\\.\\(css|scss\\)$\")"
     ]
   }
 }
